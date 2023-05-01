@@ -387,7 +387,7 @@ Copyright © Kakao Corp. All rights reserved.
             <div class="form-check d-flex justify-content-end mt-3">
                 <input type="checkbox" id="agree2"
                        class="form-check-input mx-2">
-                <label for="agree1" class="form-check-label text-primary">
+                <label for="agree2" class="form-check-label text-primary">
                     개인정보 수집 및 이용에 동의합니다</label>
             </div>
         </form>
