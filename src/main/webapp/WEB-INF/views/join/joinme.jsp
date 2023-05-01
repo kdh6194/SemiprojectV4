@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="main">
     <div class="mt-5">
         <i class="fa-solid fa-users fa-2xl"> 회원가입 </i>
@@ -41,7 +42,7 @@
                            for="name">이름</label>
                     <div class="col-3">
                         <input type="text" name="name" id="name" readonly
-                               class="form-control border-danger bg-light"> </div>
+                               class="form-control border-danger bg-light" value=`${mb.name}`> </div>
                 </div>
 
                 <div class="row col-11 offset-1 mb-3 align-items-center">
@@ -49,10 +50,10 @@
                            for="jumin1">주민번호</label>
                     <div class="col-3">
                         <input type="text" name="jumin1" id="jumin1" readonly
-                               class="form-control border-danger bg-light"> </div>
+                               class="form-control border-danger bg-light" value=`${mb.jumin1}`> </div>
                     <div class="col-3">
                         <input type="text" name="jumin2" id="jumin2" readonly
-                               class="form-control border-danger bg-light"> </div>
+                               class="form-control border-danger bg-light" value=`${mb.jumin2}`> </div>
                 </div>
 
                 <div class="row col-11 offset-1 mb-3 align-items-center">
@@ -98,7 +99,7 @@
                         <input type="text" name="zip2" id="zip2"
                                class="form-control border-danger bg-light" readonly> </div>
                     <div class="col-3">
-                        <button type="button" class="btn btn-dark"
+                        <button type="button" id="zipbtn" class="btn btn-dark"
                                 data-bs-toggle="modal" data-bs-target="#zipmodal">
                             <i class="fas fa-question-circle"></i> 우편번호 찾기 </button>
                     </div>
