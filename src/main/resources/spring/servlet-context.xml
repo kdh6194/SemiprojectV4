@@ -5,6 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <mvc:annotation-driven />
+<!--웹 정적 자원 설정 : mvc사용하지않고 접근하기 위해서 사용-->
+    <mvc:resources mapping="/assets/**" location="/resources/" />
 
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -12,7 +14,7 @@
         <property name="suffix" value=".jsp" />
         <property name="order" value="2" />
     </bean>
-
+<!--타일즈 설정-->
     <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
         <property name="order" value="1" />
