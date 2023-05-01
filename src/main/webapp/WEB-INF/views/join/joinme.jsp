@@ -125,16 +125,17 @@
                                    class="form-control border-danger">
                             <span class="input-group-text border-danger">@</span>
                             <input type="text" name="email2" id="email2"
-                                   class="form-control border-danger bg-light" readonly>
+                                   class="form-control border-danger bg-light" readonly
+                                value="">
                         </div>
                     </div>
                     <div class="col-2">
                         <select class="form-select border-danger" id="email3">
-                            <option>선택하세요</option>
-                            <option>직접입력하기</option>
-                            <option>naver.com</option>
-                            <option>gmail.com</option>
-                            <option>hotmail.com</option>
+                            <option value="">선택하세요</option>
+                            <option value="">직접입력하기</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="hotmail.com">hotmail.com</option>
                         </select> </div>
                 </div>
 

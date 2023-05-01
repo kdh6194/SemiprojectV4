@@ -26,17 +26,13 @@ noagree?.addEventListener('click', ()=>{
 //---------------------------------------------------
 
 // 실명확인
-const name2 = document.querySelector("#name2")
-const jumin1 = document.querySelector("#jumin1")
-const jumin2 = document.querySelector("#jumin2")
-const chkjumin = document.querySelector("#chkjumin")
+const checkfrm2 = document.forms.checkfrm2;
 const chkbtn2 = document.querySelector("#check2btn")
-const checkfrm2 = document.querySelector("#checkfrm2")
 chkbtn2?.addEventListener('click',()=>{
-    if(name2.value == ''){alert("이름을 입력하세요")}
-    else if(jumin1.value == ''){alert("생년월일을 입력하세요")}
-    else if(jumin2.value == ''){alert("주민번호 뒷자리를 입력하세요")}
-    else if(!chkjumin.checked){alert("동의에 체크해주세요")}
+    if(checkfrm2.name2.value === ''){alert("이름을 입력하세요")}
+    else if(checkfrm2.jumin1.value === ''){alert("생년월일을 입력하세요")}
+    else if(checkfrm2.jumin2.value === ''){alert("주민번호 뒷자리를 입력하세요")}
+    else if(!checkfrm2.chkjumin.checked){alert("동의에 체크해주세요")}
     else {
         checkfrm2.method = 'post';
         checkfrm2.action = "/join/joinme";
@@ -47,35 +43,21 @@ chkbtn2?.addEventListener('click',()=>{
 
 // -------------------------------------------------------
 
-const userid = document.querySelector("#userid")
-const passwd = document.querySelector("#passwd")
-const repasswd = document.querySelector("#repasswd")
-const zip1 = document.querySelector("#zip1")
-const zip2 = document.querySelector("#zip2")
-const addr1 = document.querySelector("#addr1")
-const addr2 = document.querySelector("#addr2")
-const email1 = document.querySelector("#email1")
-const email2 = document.querySelector("#email2")
-const tel1 = document.querySelector("#tel1")
-const tel2 = document.querySelector("#tel2")
-const tel3 = document.querySelector("#tel3")
-const recaptcha = document.querySelector("#g-recaptcha")
+const joinfrm = document.forms.joinfrm;
+const zipfrm = document.forms.zipfrm;
 const sendzip = document.querySelector("#sendzip")
-const addrlist = document.querySelector("#addrlist")
 const joinbtn = document.querySelector("#joinbtn")
-const zipfrm = document.querySelector("#zipfrm")
-const joinfrm = document.querySelector("#joinfrm")
 
 joinbtn?.addEventListener('click',()=>{
-    if(userid.value == ''){alert("아이디를 입력하세요")}
-    else if(passwd.value == ''){alert("비밀번호를 입력하세요")}
-    else if(repasswd.value == ''){alert("입력했던 비밀번호를 입력하세요")}
-    else if(passwd.value != repasswd.value){alert("일치하지 않습니다. 비밀번호를 확인하세요")}
-    else if(zip1.value == '' || zip2.value == '' ){alert("우편 번호를 입력하세요")}
-    else if(addr1.value == '' || addr2.value == ''){alert("주소를 입력하세요")}
-    else if(email1.value == '' || email2.value == ''){alert("이메일을 입력하세요")}
-    else if(tel2.value == '' || tel3.value == ''){alert("전화번호를 입력하세요")}
-    else if(recaptcha.value == ''){alert("자동가입 방지를 입력하세요")}
+    if(joinfrm.userid.value === ''){alert("아이디를 입력하세요")}
+    else if(joinfrm.passwd.value === ''){alert("비밀번호를 입력하세요")}
+    else if(joinfrm.repasswd.value === ''){alert("입력했던 비밀번호를 입력하세요")}
+    else if(joinfrm.passwd.value !== joinfrm.repasswd.value){alert("일치하지 않습니다. 비밀번호를 확인하세요")}
+    //else if(joinfrm.zip1.value === '' || joinfrm.zip2.value === '' ){alert("우편 번호를 입력하세요")}
+    //else if(joinfrm.addr1.value === '' || joinfrm.addr2.value === ''){alert("주소를 입력하세요")}
+    //else if(joinfrm.email1.value === '' || joinfrm.email2.value === ''){alert("이메일을 입력하세요")}
+    else if(joinfrm.tel2.value === '' || joinfrm.tel3.value === ''){alert("전화번호를 입력하세요")}
+    else if(joinfrm.recaptcha.value === ''){alert("자동가입 방지를 입력하세요")}
     else {
         joinfrm.method = 'post';
         joinfrm.action = "/join/joinok";
@@ -83,8 +65,14 @@ joinbtn?.addEventListener('click',()=>{
     }
 })
 
+checkfrm2.email3?.addEventListener('change',(e)=>{
+    checkfrm2.email2.value = e.target.value;
+})
+
+
+
 sendzip?.addEventListener('click',()=>{
-    if(!addrlist) {
+    if(!zipfrm.addrlist) {
         alert("해당 주소를 선택하세요")
     }else{
         zipfrm.method = 'post'
