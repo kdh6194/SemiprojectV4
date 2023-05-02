@@ -133,7 +133,7 @@
                     <div class="col-2">
                         <select class="form-select border-danger" id="email3">
                             <option value=" ">선택하세요</option>
-                            <option value="">직접입력하기</option>
+                            <option value="직접입력하기">직접입력하기</option>
                             <option value="naver.com">naver.com</option>
                             <option value="gmail.com">gmail.com</option>
                             <option value="hotmail.com">hotmail.com</option>

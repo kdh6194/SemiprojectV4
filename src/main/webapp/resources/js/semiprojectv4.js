@@ -79,8 +79,10 @@ const showzipaddr = (jsons) => {
     jsons = JSON.parse(jsons);
     let addrs = '';
     jsons.forEach(function (data,idx) {
+        let ri = (data['ri'] !== 'null') ? data['ri'] : '';
+        let bunji = (data['bunji'] !== 'null') ? data['bunji'] : '';
         addrs += `<option>${data['zipcode']} ${data['sido']}
-            ${data['gugun']} ${data['dong']} ${data['ri']} ${data['bunji']}</option>`;
+            ${data['gugun']} ${data['dong']} ${ri} ${bunji}</option>`;
     }) // 여기서 띄어쓰기가 안되어있어서 zip2에 몰아서 출력되는 것이었다.
     while (addrlist.lastChild){
         addrlist.removeChild(addrlist.lastChild);
@@ -123,8 +125,11 @@ zpmdbtn?.addEventListener('click',()=>{
 })
 
 email3?.addEventListener('change',(e)=>{
-    jnfrm.email2.value = e.target.value
-    if(email3.value === ""){
-        jnfrm.email2.removeAttribute('readonly');
+    if(email3.value === "직접입력하기"){
+        jnfrm.email2.readOnly = false;
+        jnfrm.email2.value = '';
+    }else if(email3.value !== "직접입력하기"){
+        jnfrm.email2.readOnly = true;
+        jnfrm.email2.value = email3.value;
     }
 })
