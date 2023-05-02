@@ -221,26 +221,7 @@
                             <div class="col-8 offset-2">
                                 <select class="form-select" id="addrlist"
                                         name="addrlist" size="10">
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
-                                    <option>123-456 서울 구로구 구로동</option>
+
                                 </select>
                             </div>
                         </div>
