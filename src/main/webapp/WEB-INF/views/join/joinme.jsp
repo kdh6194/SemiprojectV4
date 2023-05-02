@@ -101,6 +101,7 @@
                     <div class="col-3">
                         <button type="button" id="zipbtn" class="btn btn-dark"
                                 data-bs-toggle="modal" data-bs-target="#zipmodal">
+                            <button type="button" class="btn btn-dark" id="zpmdbtn">
                             <i class="fas fa-question-circle"></i> 우편번호 찾기 </button>
                     </div>
                 </div>

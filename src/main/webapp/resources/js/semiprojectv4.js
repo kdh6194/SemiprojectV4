@@ -105,7 +105,7 @@ sendzip?.addEventListener('click', () => {
         jnfrm.zip2.value = ziplist.split('-')[1];
         jnfrm.addr1.value = ziplist1;
 
-        bootstrap.Modal.getInstance(zipmodal).hide();
+        modal.hide();
 
     }
     else {
