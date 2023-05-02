@@ -35,6 +35,22 @@ public class JoinController {
         return "join/joinok.tiles";
     }
 
+    // 아이디 사용가능여부 검사
+    // /join/checkuid?uid=아이디
+    // 사용가능   : 0
+    // 사용불가능 : 1
+
+    @ResponseBody
+    @GetMapping("/checkuid")
+    public void checkuid(String uid, HttpServletResponse res) {
+        try {
+            // 아이디 사용여부를 뷰없이 바로 응답으로 출력
+            res.getWriter().print(jnsrv.checkUserid(uid));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     // 우편번호 검색
     // /join/zipcode?dong=동이름
     // 검색결과는 뷰페이지 없이 바로 응답으로 출력 : RESTful방식

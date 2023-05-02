@@ -1,6 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="main">
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
     <div class="mt-5">
         <i class="fa-solid fa-users fa-2xl"> 회원가입 </i>
         <hr>
@@ -101,7 +104,6 @@
                     <div class="col-3">
                         <button type="button" id="zipbtn" class="btn btn-dark"
                                 data-bs-toggle="modal" data-bs-target="#zipmodal">
-                            <button type="button" class="btn btn-dark" id="zpmdbtn">
                             <i class="fas fa-question-circle"></i> 우편번호 찾기 </button>
                     </div>
                 </div>

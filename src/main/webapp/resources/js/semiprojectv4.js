@@ -51,7 +51,11 @@ const joinbtn = document.querySelector("#joinbtn")
 const sendzip = document.querySelector("#sendzip")
 const zipmodal = document.querySelector("#zipmodal")
 const email3 = document.querySelector("#email3")
-const zpmdbtn = document.querySelector("#zpmdbtn")
+const zipmdbtn = document.querySelector("#zipmdbtn");
+const uidmsg = document.querySelector("#uidmsg");
+const pwdmsg = document.querySelector("#pwdmsg");
+
+
 
 joinbtn?.addEventListener('click',()=>{
     if(jnfrm.userid.value === ''){alert("아이디를 입력하세요")}
@@ -62,7 +66,7 @@ joinbtn?.addEventListener('click',()=>{
     else if(jnfrm.addr1.value === '' || jnfrm.addr2.value === ''){alert("주소를 입력하세요")}
     else if(jnfrm.email1.value === '' || jnfrm.email2.value === ''){alert("이메일을 입력하세요")}
     else if(jnfrm.tel2.value === '' || jnfrm.tel3.value === ''){alert("전화번호를 입력하세요")}
-    else if(jnfrm.recaptcha.value === ''){alert("자동가입 방지를 입력하세요")}
+    else if(jnfrm.g-recaptcha.getResponse() === ''){alert("자동가입 방지를 입력하세요")}
     else {
         jnfrm.method = 'post';
         jnfrm.action = "/join/joinok";
@@ -116,7 +120,7 @@ sendzip?.addEventListener('click', () => {
 })
 
 const modal = new bootstrap.Modal(zipmodal,{});
-zpmdbtn?.addEventListener('click',()=>{
+zipmdbtn?.addEventListener('click',()=>{
     while (addrlist.lastChild){
         addrlist.removeChild(addrlist.lastChild);
     }
@@ -124,12 +128,18 @@ zpmdbtn?.addEventListener('click',()=>{
     modal.show();
 })
 
-email3?.addEventListener('change',(e)=>{
+email3?.addEventListener('change',()=>{
     if(email3.value === "직접입력하기"){
         jnfrm.email2.readOnly = false;
         jnfrm.email2.value = '';
     }else if(email3.value !== "직접입력하기"){
         jnfrm.email2.readOnly = true;
         jnfrm.email2.value = email3.value;
+    }
+})
+
+dong?.addEventListener('keydown',(e)=>{
+    if(e.keyCode === 13) {
+        e.preventDefault();
     }
 })
