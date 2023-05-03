@@ -53,7 +53,10 @@ const zipmodal = document.querySelector("#zipmodal")
 const email3 = document.querySelector("#email3")
 const zipmdbtn = document.querySelector("#zipmdbtn");
 const uidmsg = document.querySelector("#uidmsg");
-const pwdmsg = document.querySelector("#pwdmsg");
+const pwdmsg = document.querySelector("#pwdmsg1");
+const userid = document.querySelector("#userid");
+const repasswd = document.querySelector("#repasswd");
+
 
 
 
@@ -66,8 +69,13 @@ joinbtn?.addEventListener('click',()=>{
     else if(jnfrm.addr1.value === '' || jnfrm.addr2.value === ''){alert("주소를 입력하세요")}
     else if(jnfrm.email1.value === '' || jnfrm.email2.value === ''){alert("이메일을 입력하세요")}
     else if(jnfrm.tel2.value === '' || jnfrm.tel3.value === ''){alert("전화번호를 입력하세요")}
-    else if(jnfrm.g-recaptcha.getResponse() === ''){alert("자동가입 방지를 입력하세요")}
+    else if(grecaptcha.getResponse() === ''){alert("자동가입 방지를 입력하세요")}
+    else if(jnfrm.checkuid.value === 'no'){alert("아이디 중복 체크를 확인하세요")}
     else {
+        jnfrm.zipcode.value = jnfrm.zip1.value + '-' + jnfrm.zip2.value;
+        jnfrm.email.value = jnfrm.email1.value + '@' + jnfrm.email2.value;
+        jnfrm.phone.value = jnfrm.tel1.value + '-' +jnfrm.tel2.value + '-' + jnfrm.tel3.value;
+
         jnfrm.method = 'post';
         jnfrm.action = "/join/joinok";
         jnfrm.submit();
@@ -83,8 +91,8 @@ const showzipaddr = (jsons) => {
     jsons = JSON.parse(jsons);
     let addrs = '';
     jsons.forEach(function (data,idx) {
-        let ri = (data['ri'] !== 'null') ? data['ri'] : '';
-        let bunji = (data['bunji'] !== 'null') ? data['bunji'] : '';
+        let ri = (data['ri'] !== null) ? data['ri'] : '';
+        let bunji = (data['bunji'] !== null) ? data['bunji'] : '';
         addrs += `<option>${data['zipcode']} ${data['sido']}
             ${data['gugun']} ${data['dong']} ${ri} ${bunji}</option>`;
     }) // 여기서 띄어쓰기가 안되어있어서 zip2에 몰아서 출력되는 것이었다.
@@ -118,8 +126,10 @@ sendzip?.addEventListener('click', () => {
         alert("주소를 선택하세요");
     }
 })
+let modal = null;
+try{modal = new bootstrap.Modal(zipmodal,{});}
+catch (e) {}
 
-const modal = new bootstrap.Modal(zipmodal,{});
 zipmdbtn?.addEventListener('click',()=>{
     while (addrlist.lastChild){
         addrlist.removeChild(addrlist.lastChild);
@@ -142,4 +152,53 @@ dong?.addEventListener('keydown',(e)=>{
     if(e.keyCode === 13) {
         e.preventDefault();
     }
+})
+
+const styleCheckuid = (chkuid) => {
+    let msg = '사용불가능한 아이디입니다'
+    uidmsg.style.color = 'red';
+    jnfrm.checkuid.value = 'no';
+
+    if(chkuid === '0') {
+        msg = '사용가능한 아이디입니다'
+        uidmsg.style.color = 'blue';
+        jnfrm.checkuid.value = 'yes';
+    }
+    uidmsg.innerText = msg;
+}
+
+userid?.addEventListener('blur',()=>{
+    if(userid.value === ''){
+        uidmsg.innerText = '6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다'
+        uidmsg.style.color = 'gray';
+        jnfrm.checkuid.value = 'no';
+        return;
+    }
+    const url = '/join/checkuid?uid=' + userid.value;
+    fetch(url).then(response=>response.text()).then(text=>styleCheckuid(text))
+})
+
+
+repasswd?.addEventListener('blur',()=>{
+    let msg = '비밀번호가 불일치합니다'
+    pwdmsg.style.color = 'red';
+
+    if(repasswd.value === jnfrm.passwd.value) {
+        msg = '비밀번호가 일치합니다.'
+        pwdmsg.style.color = 'blue';
+    }
+
+    if(repasswd.value === ''){
+        msg = '이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요'
+        pwdmsg.style.color = 'gray';
+    }
+
+    pwdmsg.innerText = msg;
+})
+
+//-----------------------joinok
+const go2index = document.querySelector('#go2index');
+
+go2index?.addEventListener('click',()=>{
+    location.href = '/';
 })

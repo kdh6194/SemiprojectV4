@@ -38,7 +38,7 @@
     <div class="card card-body bg-light mt-5 mx-3">
         <h3 class="mb-5">일반회원</h3>
 
-        <form name="joinfrm" id="joinfrm">
+        <form name="joinfrm" id="joinfrm" method="post">
             <div class="row">
                 <div class="row col-11 offset-1 mb-3 align-items-center">
                     <label class="col-2 form-label text-danger text-end"
@@ -77,7 +77,7 @@
                         <input type="password" name="passwd" id="passwd"
                                class="form-control border-danger"> </div>
                     <div class="col-auto">
-                            <span id="pwdmsg" class="form-text">
+                            <span id="pwdmsg"  class="form-text">
                                 6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다</span> </div>
                 </div>
 
@@ -88,7 +88,7 @@
                         <input type="password" name="repasswd" id="repasswd"
                                class="form-control border-danger"> </div>
                     <div class="col-auto">
-                            <span class="form-text">
+                            <span id="pwdmsg1" class="form-text">
                                 이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요</span> </div>
                 </div>
 
@@ -167,7 +167,7 @@
                     <div class="col-3">
                         <div class="g-recaptcha"
                              data-sitekey="6LdmIwgbAAAAAPO06Cyw44ZE0pkeDeMHEwVbgiM-"></div>
-                        <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+                        <input type="hidden" name="grecaptcha" id="g-recaptcha">
                     </div>
                 </div>
 
@@ -189,6 +189,7 @@
             <input type="hidden" name="zipcode" id="zipcode">
             <input type="hidden" name="email" id="email">
             <input type="hidden" name="phone" id="phone">
+            <input type="hidden" name="checkuid" id="checkuid">
 
         </form>
 

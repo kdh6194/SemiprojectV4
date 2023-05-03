@@ -8,6 +8,10 @@
     </select>
     <select id="selectOneUid" statementType="PREPARED" parameterType="String"
             resultType="int">
-        select count(userid) cnt from member where userid = #{uid}
+        select count(userid) cnt from member1 where userid = #{uid}
     </select>
+    <insert id="insertMember" statementType="PREPARED" parameterType="honeybee.spring4mvc.semiprojectv4.model.Member">
+        insert into member1(name,jumin1,jumin2,userid,passwd,zipcode,addr1,addr2,email,phone)
+        values (#{name},#{jumin1},#{jumin2},#{userid},#{passwd},#{zipcode},#{addr1},#{addr2},#{email},#{phone})
+    </insert>
 </mapper>

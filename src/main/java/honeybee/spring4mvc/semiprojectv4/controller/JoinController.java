@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/join")//공통으로 들어가는 주소
+@RequestMapping(value = "/join")//공통으로 들어가는 주소
 public class JoinController {
     @Autowired private JoinService jnsrv;
 
@@ -30,9 +30,15 @@ public class JoinController {
         mv.addObject("mb",mb);
         return mv;
     }
-    @GetMapping("/joinok")
-    public String joinok() {
-        return "join/joinok.tiles";
+    @PostMapping("/joinok")
+    public String joinok(Member m, String grecaptcha) {
+        String view = "/error.tiles";
+
+        if (jnsrv.newMember(m)) {
+            view = "join/joinok.tiles";
+
+        }
+        return view;
     }
 
     // 아이디 사용가능여부 검사
