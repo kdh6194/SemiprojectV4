@@ -45,4 +45,16 @@ public class JoinDAOTest {
         m.setPhone("abc123");
         assertEquals(1,(int)sqlSession.insert("join.insertMember", m));
     }
+
+    @Test
+    public void selectLogin() {
+        Member m = new Member();
+        m.setUserid("uiop");
+        m.setPasswd("1234");
+        assertEquals(1,(int)sqlSession.selectOne("member.selectsql",m));
+
+        m.setUserid("uiop1");
+        m.setPasswd("1234");
+        assertEquals(0,(int)sqlSession.selectOne("member.selectsql",m));
+    }
 }

@@ -14,6 +14,9 @@ public class Member {
     private String phone;
     private String regdate;
 
+    private String userid1;
+    private String passwd1;
+
     public Member () {};
 
     public Member(String mbno, String name, String jumin1, String jumin2, String userid, String passwd, String zipcode, String addr1, String addr2, String email, String phone, String regdate) {
@@ -29,6 +32,27 @@ public class Member {
         this.email = email;
         this.phone = phone;
         this.regdate = regdate;
+    }
+
+    public Member (String userid1,String passwd1){
+        this.userid1 = userid1;
+        this.passwd1 = passwd1;
+    }
+
+    public String getUserid1() {
+        return userid1;
+    }
+
+    public void setUserid1(String userid1) {
+        this.userid1 = userid1;
+    }
+
+    public String getPasswd1() {
+        return passwd1;
+    }
+
+    public void setPasswd1(String passwd1) {
+        this.passwd1 = passwd1;
     }
 
     public String getMbno() {

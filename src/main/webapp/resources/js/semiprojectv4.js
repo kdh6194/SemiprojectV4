@@ -202,3 +202,22 @@ const go2index = document.querySelector('#go2index');
 go2index?.addEventListener('click',()=>{
     location.href = '/';
 })
+
+//---------------------------------login
+const loginbtn = document.querySelector("#loginbtn");
+const logoutbtn = document.querySelector("#logfindbtn");
+const lgfrm = document.forms.lgnfrm;
+
+loginbtn?.addEventListener('click',()=>{
+    if(lgfrm.userid1.value === '') {alert("아이디를 입력하세요")}
+    else if(lgfrm.passwd1.value === '') {alert("비밀번호를 입력하세요")}
+    else {
+    lgfrm.method = 'post';
+    lgfrm.action = '/login';
+    lgfrm.submit();
+    }
+})
+
+logoutbtn?.addEventListener('click',()=>{
+    location.href='/logout'
+})
