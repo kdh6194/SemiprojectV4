@@ -1,9 +1,12 @@
 package honeybee.spring4mvc.semiprojectv4.controller;
 
+import honeybee.spring4mvc.semiprojectv4.model.Board;
+import honeybee.spring4mvc.semiprojectv4.model.Member;
 import honeybee.spring4mvc.semiprojectv4.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,10 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class BoardController {
     @Autowired
     private BoardService bsrv;
-
-    public BoardController(BoardService bsrv) {
-        this.bsrv = bsrv;
-    }
 
     @GetMapping("/list")
     public ModelAndView list(int cpg) {
@@ -39,5 +38,23 @@ public class BoardController {
 
         return mv;
     }
+    @GetMapping("/write")
+    public String write(){
+        return "board/write.tiles";
+    }
+    @PostMapping("/write")
+    public String writeok(Board b){
+        String view = "error.tiles";
+
+        if(bsrv.newBoard(b)){view = "redirect:/board/list?cpg=1";}
+
+        return view;
+    }
+    @GetMapping("/view")
+    public String view(){
+        return "board/view.tiles";
+    }
+
+
 
 }

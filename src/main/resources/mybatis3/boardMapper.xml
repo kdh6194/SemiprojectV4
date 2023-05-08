@@ -10,7 +10,7 @@
     </select>
 
     <select id="countBoard" statementType="PREPARED" resultType="int">
-        select ceil(count(bno)/25) cnt from board
+        select ceil(count(bno)/25) cnt from board1
     </select>
 
     <!--동적질의문으로 검색기능 구현 -->
@@ -23,9 +23,13 @@
     </select>
 
     <select id="countFindBoard" statementType="PREPARED" parameterType="map" resultType="int">
-        select ceil(count(bno)/25) cnt from board
+        select ceil(count(bno)/25) cnt from board1
         <if test="ftype != 'titcont'">where ${ftype} like concat('%',#{fkey},'%')</if>
         <if test="ftype == 'titcont'">where title like concat('%',#{fkey},'%') or content like concat('%',#{fkey},'%') or userid like concat('%',#{fkey},'%')</if>
     </select>
+
+    <insert id="insertsql" statementType="PREPARED" parameterType="honeybee.spring4mvc.semiprojectv4.model.Board">
+        insert into board1(title,userid,content) values (#{title},#{userid},#{content})
+    </insert>
 </mapper>
 

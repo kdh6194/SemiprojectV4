@@ -9,4 +9,5 @@ public interface BoardService {
     List<Board> showBoard(int cpage,String ftype, String fkey);
     int countBoard();
     int countBoard(String ftype, String fkey);
+    boolean newBoard(Board b);
 }

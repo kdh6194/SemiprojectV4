@@ -5,12 +5,12 @@
 <!--검색기능x 목록 조회-->
 <c:set var="pglink" value="/board/list?cpg=" />
 <!--검색기능o 목록 조회-->
-<c:if test="${not empty param.fkey} ">
-<c:set var="pglink" value="/board/find?ftype=${param.ftype}&fkey=${param.fkey}&cpg=" />
+<c:if test="${not empty param.fkey}">
+    <c:set var="pglink" value="/board/find?ftype=${param.ftype}&fkey=${param.fkey}&cpg=" />
 </c:if>
 <div id="main">
     <div class="mt-5">
-        <i class="fa-solid fa-pen-to-square fa-2xl"></i> 게시판 </i>
+        <i class="fa-solid fa-pen-to-square fa-2xl"> 게시판 </i>
         <hr>
     </div>
 
@@ -25,14 +25,14 @@
 
         <div class="col-4 text-start">
             <input type="text" class="form-control col-2" id="findkey"
-            value="${param.fkey}"
-            ></div>
+                   value="${param.fkey}"></div>
 
         <div class="col-3 text-start">
             <button type="button" id="findbtn" class="btn btn-light">
                 <i class="fa-solid fa-magnifying-glass"></i>검색하기</button></div>
+
         <div class="offset-2 col-2 text-end">
-            <button type="button" class="btn btn-light">
+            <button type="button" id="newbtn" class="btn btn-light">
                 <i class="fa fa-plus-circle"></i>새글쓰기</button>
         </div>
 
@@ -102,8 +102,8 @@
         <div class="offset-1 col-10 text-center">
             <nav>
                 <ul class="pagination justify-content-center">
-                    <c:if test="${cpg gt 1}">
-                        <li><a class="page-link" href="${pglink}1">처음</a></li>
+                    <c:if test="${cpg gt 1}"><li class="page-item">
+                        <a class="page-link" href="${pglink}1">처음</a></li>
                     </c:if>
 
                     <c:if test="${cpg - 1 gt 0}"><li class="page-item"></c:if>
@@ -122,8 +122,8 @@
                     <c:if test="${(cpg+1) gt cntpg}"><li class="page-item disabled"></c:if>
                     <a class="page-link" href="${pglink}${cpg+1}">다음</a></li>
 
-                    <c:if test="${cpg lt cntpg}">
-                        <li><a class="page-link" href="${pglink}${cntpg}">끝</a></li>
+                    <c:if test="${cpg lt cntpg}"><li class="page-item">
+                        <a class="page-link" href="${pglink}${cntpg}">끝</a></li>
                     </c:if>
                 </ul>
             </nav>

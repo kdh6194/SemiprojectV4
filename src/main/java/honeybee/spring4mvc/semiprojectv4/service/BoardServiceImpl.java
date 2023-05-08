@@ -42,4 +42,10 @@ public class BoardServiceImpl implements BoardService {
         params.put("fkey",fkey);
         return bdao.countBoard(params);
     }
+
+    @Override
+    public boolean newBoard(Board b) {
+        bdao.insertBoard(b);
+        return true;
+    }
 }
