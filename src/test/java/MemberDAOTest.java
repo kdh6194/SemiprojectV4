@@ -23,9 +23,9 @@ public class MemberDAOTest {
     @Test
     public void selectFindBoard() {
         Map<String,Object> params = new HashMap<>();
-        params.put("stbno",0);
+        params.put("stbno",201);
         params.put("ftype","title");
-        params.put("fkey","석가탄신일");
+        params.put("fkey","운영자");
         assertNotNull(sqlSession.selectList("board.selectsql",params));
     }
 }

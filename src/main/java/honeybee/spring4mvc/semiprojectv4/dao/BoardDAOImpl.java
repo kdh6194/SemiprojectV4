@@ -19,7 +19,7 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public List<Board> selectBoard(Map<String,Object> params)
     {
-        return sqlSession.selectList("board.selectsql",params) ;
+        return sqlSession.selectList("board.selectFindBoard",params) ;
     }
     @Override
     public int countBoard() {
@@ -27,6 +27,6 @@ public class BoardDAOImpl implements BoardDAO {
     }
     @Override
     public int countBoard(Map<String,Object> params) {
-        return sqlSession.selectOne("board.countBoard",params);
+        return sqlSession.selectOne("board.countFindBoard",params);
     }
 }

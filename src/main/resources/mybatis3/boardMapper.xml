@@ -17,13 +17,15 @@
     <!-- 단, 컬럼명이나 테이블명에는 #{}이 아닌 ${]를 사용-->
     <select id="selectFindBoard" statementType="PREPARED" parameterType="map" resultType="honeybee.spring4mvc.semiprojectv4.model.Board">
         select bno,title,userid,regdate,thumbs,views from board1
-        <if test="ftype != 'titcont'">
-        where ${ftype} like concat(#{fkey},'%')
-        </if>
-        <if test="ftype == 'titcont'">
-        where title like concat(#{fkey},'%') or content like concat(#{fkey},'%') or userid like concat(#{fkey},'%')
-        </if>
+        <if test="ftype != 'titcont'">where ${ftype} like concat('%',#{fkey},'%')</if>
+        <if test="ftype == 'titcont'">where title like concat('%',#{fkey},'%') or content like concat('%',#{fkey},'%') or userid like concat('%',#{fkey},'%')</if>
         order by bno desc limit #{stbno},25
+    </select>
+
+    <select id="countFindBoard" statementType="PREPARED" parameterType="map" resultType="int">
+        select ceil(count(bno)/25) cnt from board
+        <if test="ftype != 'titcont'">where ${ftype} like concat('%',#{fkey},'%')</if>
+        <if test="ftype == 'titcont'">where title like concat('%',#{fkey},'%') or content like concat('%',#{fkey},'%') or userid like concat('%',#{fkey},'%')</if>
     </select>
 </mapper>
 

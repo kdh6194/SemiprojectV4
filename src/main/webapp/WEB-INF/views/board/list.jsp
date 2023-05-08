@@ -2,8 +2,12 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<!--검색기능x 목록 조회-->
 <c:set var="pglink" value="/board/list?cpg=" />
-
+<!--검색기능o 목록 조회-->
+<c:if test="${not empty param.fkey} ">
+<c:set var="pglink" value="/board/find?ftype=${param.ftype}&fkey=${param.fkey}&cpg=" />
+</c:if>
 <div id="main">
     <div class="mt-5">
         <i class="fa-solid fa-pen-to-square fa-2xl"></i> 게시판 </i>
@@ -20,10 +24,12 @@
             </select></div>
 
         <div class="col-4 text-start">
-            <input type="text" class="form-control col-2" id="findkey"></div>
+            <input type="text" class="form-control col-2" id="findkey"
+            value="${param.fkey}"
+            ></div>
 
         <div class="col-3 text-start">
-            <button type="button" class="btn btn-light">
+            <button type="button" id="findbtn" class="btn btn-light">
                 <i class="fa-solid fa-magnifying-glass"></i>검색하기</button></div>
         <div class="offset-2 col-2 text-end">
             <button type="button" class="btn btn-light">
@@ -130,22 +136,3 @@
 
 <script src="/assets/js/board.js"></script>
 
-<%--<div class="area_paging">--%>
-<%--    <span class="inner_paging">--%>
-<%--         <a  class="btn_prev no-more-prev"><span class="ico_skin ico_prev"></span>Prev</a>--%>
-<%--    						--%>
-<%--    		<a href="/category/CS/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%ED%92%80%EC%9D%B4?page=1" class="link_page"><span class="selected">1</span></a>--%>
-<%--    						--%>
-<%--    		<a href="/category/CS/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%ED%92%80%EC%9D%B4?page=2" class="link_page"><span class="">2</span></a>--%>
-<%--    						--%>
-<%--    		<a href="/category/CS/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%ED%92%80%EC%9D%B4?page=3" class="link_page"><span class="">3</span></a>--%>
-<%--    						--%>
-<%--    		<a href="/category/CS/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%ED%92%80%EC%9D%B4?page=4" class="link_page"><span class="">4</span></a>--%>
-<%--    						--%>
-<%--    		<a  class="link_page"><span class="">···</span></a>--%>
-<%--    						--%>
-<%--    	<a href="/category/CS/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%ED%92%80%EC%9D%B4?page=7" class="link_page"><span class="">7</span></a>--%>
-<%--    						--%>
-<%--      <a href="/category/CS/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%20%ED%92%80%EC%9D%B4?page=2" class="btn_next ">Next<span class="ico_skin ico_next"></span></a>--%>
-<%--    </span>--%>
-<%--</div>--%>
