@@ -26,11 +26,11 @@
         <li class="nav-item">
             <a href="/join/agree" class="nav-link">회원가입</a></li>
         <li class="nav-item">
-            <a href="/board/list" class="nav-link">게시판</a></li>
+            <a href="/board/list?cpg=1" class="nav-link">게시판</a></li>
         <li class="nav-item">
-            <a href="/pds/list" class="nav-link">자료실</a></li>
+            <a href="/pds/list?cpg=1" class="nav-link">자료실</a></li>
         <li class="nav-item">
-            <a href="/gallery/list" class="nav-link">갤러리</a></li>
+            <a href="/gallery/list?cpg=1" class="nav-link">갤러리</a></li>
         <li class="nav-item">
             <a href="/admin" class="nav-link">관리자</a></li>
     </ul>
